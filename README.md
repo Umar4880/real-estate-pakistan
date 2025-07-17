@@ -231,7 +231,7 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 ## 📧 Contact
 **Rana Umar**  
-- GitHub: [@your-username](https://github.com/Umar4880)
+- GitHub: [@Umar4880](https://github.com/Umar4880)
 - Email: ranaumarranaumar705@gmail.com
 
 ---
