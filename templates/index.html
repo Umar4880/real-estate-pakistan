@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Pakistan Real Estate Price Predictor</title>
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="background-animation">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-home"></i>
+                    <span>EstateAI</span>
+                </div>
+                <h1 class="main-title">Pakistan Real Estate Price Predictor</h1>
+                <p class="subtitle">Get accurate property price predictions powered by NovaAi</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="form-container">
+                <div class="form-header">
+                    <h2><i class="fas fa-calculator"></i> Property Details</h2>
+                    <p>Fill in the details below to get an instant price prediction</p>
+                </div>
+
+                <form id="prediction-form" class="prediction-form">
+                    <!-- Property Type & Purpose -->
+                    <div class="form-row">
+                       <div class="form-group">
+                            <label for="type"><i class="fas fa-building"></i> Property Type</label>
+                            <div class="input-wrapper">
+                                <input list="type-options" id="type" name="type" autocomplete="on" required placeholder="Type or select property type">
+                                <datalist id="type-options">
+                                    <option value="House">House</option>
+                                    <option value="Flat">Flat</option>
+                                    <option value="Farm House">Farm House</option>
+                                    <option value="Penthouse">Penthouse</option>
+                                    <option value="Room">Room</option>
+                                    <option value="Shop">Shop</option>
+                                    <option value="Office">Office</option>
+                                    <option value="Building">Building</option>
+                                    <option value="Warehouse">Warehouse</option>
+                                    <option value="Plot File">Plot File</option>
+                                    <option value="Plot Form">Plot Form</option>
+                                    <option value="Upper Portion">⬆Upper Portion</option>
+                                    <option value="Lower Portion">⬇Lower Portion</option>
+                                    <option value="Commercial Plot">Commercial Plot</option>
+                                    <option value="Residential Plot">Residential Plot</option>
+                                    <option value="Industrial Land">Industrial Land</option>
+                                    <option value="Agricultural Land">Agricultural Land</option>
+                                    <option value="Factory">Factory</option>
+                                </datalist>
+                                <i class="fas fa-search input-icon"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="purpose"><i class="fas fa-tag"></i> Purpose</label>
+                            <div class="radio-group">
+                                <input type="radio" id="sale" name="purpose" value="For Sale" checked>
+                                <label for="sale" class="radio-label">
+                                    <i class="fas fa-dollar-sign"></i> For Sale
+                                </label>
+                                <input type="radio" id="rent" name="purpose" value="For Rent">
+                                <label for="rent" class="radio-label">
+                                    <i class="fas fa-key"></i> For Rent
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Area & Bedrooms -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="area"><i class="fas fa-ruler-combined"></i> Area (sq ft)</label>
+                            <input type="number" id="area" name="area" placeholder="e.g., 2250" min="1" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bedrooms"><i class="fas fa-bed"></i> Bedrooms</label>
+                            <input type="number" id="bedrooms" name="bedrooms" placeholder="e.g., 3" min="0" required>
+                        </div>
+                    </div>
+
+                    <!-- Bathrooms & Initial Amount -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bath"><i class="fas fa-bath"></i> Bathrooms</label>
+                            <input type="number" id="bath" name="bath" placeholder="e.g., 2" min="0" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="initial_amount"><i class="fas fa-coins"></i> Initial Amount (Lakhs)</label>
+                            <input type="number" id="initial_amount" name="initial_amount" placeholder="0" min="0" step="0.01">
+                        </div>
+                    </div>
+
+                    <!-- Installment Details -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="monthly_installment"><i class="fas fa-calendar-alt"></i> Monthly Installment (Lakhs)</label>
+                            <input type="number" id="monthly_installment" name="monthly_installment" placeholder="0" min="0" step="0.01">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="remaining_installments"><i class="fas fa-clock"></i> Remaining Installments</label>
+                            <input type="number" id="remaining_installments" name="remaining_installments" placeholder="0" min="0">
+                        </div>
+                    </div>
+
+                    <!-- Location Details -->
+                    <div class="location-section">
+                        <h3><i class="fas fa-map-marker-alt"></i> Location Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="location_province"><i class="fas fa-flag"></i> Province</label>
+                                <div class="select-wrapper">
+                                    <select id="location_province" name="location_province" required>
+                                        <option value="">Select province</option>
+                                        <option value="Punjab">Punjab</option>
+                                        <option value="Sindh">Sindh</option>
+                                        <option value="Khyber Pakhtunkhwa">Khyber Pakhtunkhwa</option>
+                                        <option value="Balochistan">Balochistan</option>
+                                        <option value="Islamabad Capital">Islamabad Capital</option>
+                                    </select>
+                                    <i class="fas fa-chevron-down select-arrow"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="location_city"><i class="fas fa-city"></i> City</label>
+                                <input type="text" id="location_city" name="location_city" placeholder="e.g., Lahore" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="location"><i class="fas fa-location-dot"></i> Specific Location</label>
+                            <input type="text" id="location" name="location" placeholder="e.g., DHA Phase 5" required>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-magic"></i>
+                        <span>Predict Price</span>
+                        <div class="btn-loading">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </div>
+                    </button>
+                </form>
+
+                <!-- Results Section -->
+                <div id="prediction-result" class="result-container">
+                    <!-- Results will be displayed here -->
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 EstateAI. Powered by NovaAi</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='real-estate.js') }}"></script>
+</body>
+</html>
